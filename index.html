@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to stay focused longer – Improvement Pill</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --correct: #22c55e;
+      --incorrect: #ef4444;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      margin-bottom: 8px;
+      color: #f8fafc;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 36px;
+      background: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .question {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .question h3 {
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      color: #f1f5f9;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      user-select: none;
+    }
+
+    .option:hover {
+      border-color: var(--accent);
+      background: #1e293b;
+    }
+
+    .option input[type="radio"] {
+      margin-top: 4px;
+      accent-color: var(--accent);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .option span {
+      flex: 1;
+    }
+
+    /* Feedback states */
+    .option.correct {
+      background: rgba(34, 197, 94, 0.18);
+      border-color: var(--correct);
+      color: #bbf7d0;
+    }
+
+    .option.incorrect {
+      background: rgba(239, 68, 68, 0.18);
+      border-color: var(--incorrect);
+      color: #fecaca;
+    }
+
+    .option.correct input,
+    .option.incorrect input {
+      pointer-events: none;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 16px;
+      align-items: center;
+    }
+
+    button {
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    #score {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-left: 8px;
+    }
+
+    .footer-note {
+      margin-top: 32px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How to stay focused longer</h1>
+    <p class="subtitle">by Improvement Pill</p>
+    <p class="subtitle" style="margin-top: -12px; margin-bottom: 28px;">Watch the video, then answer the 10 questions below.</p>
+
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/O-ETErmpVxI" 
+        title="Focus training video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <form id="quizForm">
+      <!-- Question 1 -->
+      <div class="question" data-correct="B">
+        <h3>1. What comparison does the speaker make at the beginning of the video?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="A"> <span>A. Focus is like intelligence.</span></label>
+          <label class="option"><input type="radio" name="q1" value="B"> <span>B. A lack of focus is like being physically out of shape.</span></label>
+          <label class="option"><input type="radio" name="q1" value="C"> <span>C. Studying is like going to the gym.</span></label>
+          <label class="option"><input type="radio" name="q1" value="D"> <span>D. Social media is like junk food.</span></label>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-correct="C">
+        <h3>2. What does the speaker recommend doing first to improve your focus?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="A"> <span>A. Stop using social media completely.</span></label>
+          <label class="option"><input type="radio" name="q2" value="B"> <span>B. Start meditating every morning.</span></label>
+          <label class="option"><input type="radio" name="q2" value="C"> <span>C. Exercise your mind regularly.</span></label>
+          <label class="option"><input type="radio" name="q2" value="D"> <span>D. Get more sleep.</span></label>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-correct="B">
+        <h3>3. How should you determine your current “focus strength level”?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="A"> <span>A. Ask someone to evaluate your concentration.</span></label>
+          <label class="option"><input type="radio" name="q3" value="B"> <span>B. Read or work on a difficult task until you feel the urge to do something else and time it.</span></label>
+          <label class="option"><input type="radio" name="q3" value="C"> <span>C. Take an online concentration test.</span></label>
+          <label class="option"><input type="radio" name="q3" value="D"> <span>D. Count how many tasks you can complete in an hour.</span></label>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-correct="C">
+        <h3>4. If someone can currently focus for about five minutes, what does the speaker suggest they should aim for?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="A"> <span>A. Fifteen minutes</span></label>
+          <label class="option"><input type="radio" name="q4" value="B"> <span>B. Ten minutes</span></label>
+          <label class="option"><input type="radio" name="q4" value="C"> <span>C. Five and a half to six minutes</span></label>
+          <label class="option"><input type="radio" name="q4" value="D"> <span>D. Exactly five minutes</span></label>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question" data-correct="C">
+        <h3>5. How many “sets” of the focus exercise does the speaker recommend doing each day?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="A"> <span>A. Three</span></label>
+          <label class="option"><input type="radio" name="q5" value="B"> <span>B. Four</span></label>
+          <label class="option"><input type="radio" name="q5" value="C"> <span>C. Five</span></label>
+          <label class="option"><input type="radio" name="q5" value="D"> <span>D. Ten</span></label>
+        </div>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question" data-correct="B">
+        <h3>6. Why does the speaker recommend changing the type of focus exercise from time to time?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q6" value="A"> <span>A. To make the exercises more entertaining</span></label>
+          <label class="option"><input type="radio" name="q6" value="B"> <span>B. To strengthen different aspects of mental focus</span></label>
+          <label class="option"><input type="radio" name="q6" value="C"> <span>C. To avoid becoming too good at one particular task</span></label>
+          <label class="option"><input type="radio" name="q6" value="D"> <span>D. To reduce the amount of time spent training</span></label>
+        </div>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question" data-correct="C">
+        <h3>7. What does the speaker mean by “mental junk food”?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q7" value="A"> <span>A. Content that is difficult to understand</span></label>
+          <label class="option"><input type="radio" name="q7" value="B"> <span>B. Content that contains too much advertising</span></label>
+          <label class="option"><input type="radio" name="q7" value="C"> <span>C. Short, highly stimulating content such as much of what we consume on social media</span></label>
+          <label class="option"><input type="radio" name="q7" value="D"> <span>D. Educational content that is too easy</span></label>
+        </div>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question" data-correct="C">
+        <h3>8. What kind of content does the speaker describe as healthier for your “mental diet”?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q8" value="A"> <span>A. Short videos with frequent edits</span></label>
+          <label class="option"><input type="radio" name="q8" value="B"> <span>B. Social media posts and memes</span></label>
+          <label class="option"><input type="radio" name="q8" value="C"> <span>C. Long, relatively slow-paced content such as interviews and documentaries</span></label>
+          <label class="option"><input type="radio" name="q8" value="D"> <span>D. Video games and interactive apps</span></label>
+        </div>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question" data-correct="B">
+        <h3>9. Why does the speaker advise against multitasking while consuming content?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q9" value="A"> <span>A. It makes content less enjoyable.</span></label>
+          <label class="option"><input type="radio" name="q9" value="B"> <span>B. It prevents you from fully focusing on what you're consuming.</span></label>
+          <label class="option"><input type="radio" name="q9" value="C"> <span>C. It takes too much time.</span></label>
+          <label class="option"><input type="radio" name="q9" value="D"> <span>D. It makes it harder to remember individual facts.</span></label>
+        </div>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question" data-correct="C">
+        <h3>10. What is the speaker's overall message about improving focus?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q10" value="A"> <span>A. You can dramatically improve your focus in a few days.</span></label>
+          <label class="option"><input type="radio" name="q10" value="B"> <span>B. The best solution is to completely eliminate social media.</span></label>
+          <label class="option"><input type="radio" name="q10" value="C"> <span>C. Improving focus requires regular training and changes to your everyday content consumption.</span></label>
+          <label class="option"><input type="radio" name="q10" value="D"> <span>D. Focus mainly depends on how intelligent you are.</span></label>
+        </div>
+      </div>
+    </form>
+
+    <div class="controls">
+      <button type="button" id="checkBtn">Check all answers</button>
+      <button type="button" id="resetBtn" class="secondary">Reset quiz</button>
+      <span id="score"></span>
+    </div>
+
+    <p class="footer-note">Select your answers, then click “Check all answers” to see which ones are correct (green) or incorrect (red).</p>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+    const scoreEl = document.getElementById('score');
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // Check all answers button – colours appear only after clicking
+    checkBtn.addEventListener('click', () => {
+      let correctCount = 0;
+
+      questions.forEach(q => {
+        const correct = q.dataset.correct;
+        const options = q.querySelectorAll('.option');
+        const selected = q.querySelector('input:checked');
+
+        options.forEach(o => o.classList.remove('correct', 'incorrect'));
+
+        if (selected) {
+          const selectedOpt = selected.closest('.option');
+          if (selected.value === correct) {
+            selectedOpt.classList.add('correct');
+            correctCount++;
+          } else {
+            selectedOpt.classList.add('incorrect');
+            // Also highlight the correct answer
+            options.forEach(o => {
+              if (o.querySelector('input').value === correct) {
+                o.classList.add('correct');
+              }
+            });
+          }
+        }
+      });
+
+      scoreEl.textContent = `Score: ${correctCount} / ${questions.length}`;
+    });
+
+    // Reset button
+    resetBtn.addEventListener('click', () => {
+      document.getElementById('quizForm').reset();
+      document.querySelectorAll('.option').forEach(o => {
+        o.classList.remove('correct', 'incorrect');
+      });
+      scoreEl.textContent = '';
+    });
+  </script>
+</body>
+</html>
